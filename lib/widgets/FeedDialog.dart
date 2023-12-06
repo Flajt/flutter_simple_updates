@@ -16,7 +16,7 @@ class FeedDialog extends StatelessWidget {
       child: Column(
         children: [
           SizedBox(
-            height: 100,
+            height: 50,
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Align(
@@ -36,15 +36,15 @@ class FeedDialog extends StatelessWidget {
                           builder: (context) =>
                               FeedEntryPage(feedEntry: feedEntries[index]))),
                       title: Text(feedEntries[index].title,
-                          style: listTileTheme.titleTextStyle!.copyWith(
+                          style: listTileTheme.titleTextStyle?.copyWith(
                               overflow: TextOverflow.ellipsis,
                               fontWeight: FontWeight.bold)),
-                      subtitle: Text(
-                          feedEntries[index]
-                              .body
-                              .substring(0, subBodyPreviewLength),
-                          style: listTileTheme.subtitleTextStyle!
-                              .copyWith(overflow: TextOverflow.ellipsis)));
+                      subtitle: Text(feedEntries[index].body,
+                          style: listTileTheme.subtitleTextStyle?.copyWith(
+                                overflow: TextOverflow.ellipsis,
+                              ) ??
+                              const TextStyle(
+                                  overflow: TextOverflow.ellipsis)));
                 }),
           ),
         ],
