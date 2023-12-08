@@ -46,7 +46,7 @@ class _NotificationWidgetState extends State<NotificationWidget> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<void>(
-        future: widget.cache.init(),
+        future: _initCacheIfNotInit(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
             return StreamBuilder(
@@ -84,5 +84,11 @@ class _NotificationWidgetState extends State<NotificationWidget> {
             return const CircularProgressIndicator.adaptive();
           }
         });
+  }
+
+  Future<void> _initCacheIfNotInit() async {
+    if (!widget.cache.hasInit) {
+      await widget.cache.init();
+    }
   }
 }
