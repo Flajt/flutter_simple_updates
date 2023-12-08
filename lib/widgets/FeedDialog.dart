@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_simple_updates/interface/IConverter.dart';
 import 'package:flutter_simple_updates/logic/FeedRepository.dart';
 import 'package:flutter_simple_updates/models/FeedEntryModel.dart';
 import 'package:flutter_simple_updates/pages/FeedEntryPage.dart';
 
 class FeedDialog extends StatelessWidget {
   final FeedRepository feedRepository;
+  final IConverter converter;
 
   /// Text to display if the feed is empty
   final String emptyFeedText;
   const FeedDialog(
       {super.key,
       this.emptyFeedText = "Seems like there are is no data yet",
+      required this.converter,
       required this.feedRepository});
 
   @override
@@ -48,6 +51,7 @@ class FeedDialog extends StatelessWidget {
                               onTap: () => Navigator.of(context).push(
                                   MaterialPageRoute(
                                       builder: (context) => FeedEntryPage(
+                                          converter: converter,
                                           feedEntry: feedEntries[index]))),
                               title: Text(feedEntries[index].title,
                                   style: listTileTheme.titleTextStyle?.copyWith(
