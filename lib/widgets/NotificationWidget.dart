@@ -48,37 +48,41 @@ class _NotificationWidgetState extends State<NotificationWidget> {
     return FutureBuilder<void>(
         future: widget.cache.init(),
         builder: (context, snapshot) {
-          return StreamBuilder(
-            initialData: false,
-            stream: widget.notificationQueryService.queryForUpdates(),
-            builder: (context, snapshot) {
-              if (snapshot.hasData && snapshot.data != null) {
-                bool data = snapshot.data!;
-                return IconButton(
-                    onPressed: () {
-                      showDialog(
-                          context: context,
-                          builder: (context) => FeedDialog(
-                                converter: widget.converter,
-                                feedRepository: FeedRepository(
-                                    feedProvider: widget.feedProvider,
-                                    cache: widget.cache),
-                              ));
-                      if (data) {
-                        setState(() {});
-                      }
-                    },
-                    icon: data
-                        ? widget.hasNotificationIcon
-                        : widget.noNotificationIcon);
-              } else if (snapshot.hasError) {
-                debugPrint(snapshot.error.toString());
-                return const Icon(Icons.warning);
-              } else {
-                return const SizedBox();
-              }
-            },
-          );
+          if (snapshot.connectionState == ConnectionState.done) {
+            return StreamBuilder(
+              initialData: false,
+              stream: widget.notificationQueryService.queryForUpdates(),
+              builder: (context, snapshot) {
+                if (snapshot.hasData && snapshot.data != null) {
+                  bool data = snapshot.data!;
+                  return IconButton(
+                      onPressed: () {
+                        showDialog(
+                            context: context,
+                            builder: (context) => FeedDialog(
+                                  converter: widget.converter,
+                                  feedRepository: FeedRepository(
+                                      feedProvider: widget.feedProvider,
+                                      cache: widget.cache),
+                                ));
+                        if (data) {
+                          setState(() {});
+                        }
+                      },
+                      icon: data
+                          ? widget.hasNotificationIcon
+                          : widget.noNotificationIcon);
+                } else if (snapshot.hasError) {
+                  debugPrint(snapshot.error.toString());
+                  return const Icon(Icons.warning);
+                } else {
+                  return const SizedBox();
+                }
+              },
+            );
+          } else {
+            return const CircularProgressIndicator.adaptive();
+          }
         });
   }
 }
