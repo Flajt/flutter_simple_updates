@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_simple_updates/interface/IConverter.dart';
 import 'package:flutter_simple_updates/logic/FeedRepository.dart';
 import 'package:flutter_simple_updates/models/FeedEntryModel.dart';
-import 'package:flutter_simple_updates/pages/FeedEntryPage.dart';
+import 'package:flutter_simple_updates/widgets/FeedDialogTile.dart';
 
 class FeedDialog extends StatelessWidget {
   final FeedRepository feedRepository;
@@ -47,23 +47,10 @@ class FeedDialog extends StatelessWidget {
                     child: ListView.builder(
                         itemCount: feedEntries.length,
                         itemBuilder: (context, index) {
-                          return ListTile(
-                              onTap: () => Navigator.of(context).push(
-                                  MaterialPageRoute(
-                                      builder: (context) => FeedEntryPage(
-                                          converter: converter,
-                                          feedEntry: feedEntries[index]))),
-                              title: Text(feedEntries[index].title,
-                                  style: listTileTheme.titleTextStyle?.copyWith(
-                                      overflow: TextOverflow.ellipsis,
-                                      fontWeight: FontWeight.bold)),
-                              subtitle: Text(feedEntries[index].body,
-                                  style: listTileTheme.subtitleTextStyle
-                                          ?.copyWith(
-                                        overflow: TextOverflow.ellipsis,
-                                      ) ??
-                                      const TextStyle(
-                                          overflow: TextOverflow.ellipsis)));
+                          return FeedDialogTile(
+                              converter: converter,
+                              feedEntry: feedEntries[index],
+                              listTileTheme: listTileTheme);
                         }));
               } else if (snapshot.hasData && snapshot.data!.isEmpty) {
                 return Expanded(
