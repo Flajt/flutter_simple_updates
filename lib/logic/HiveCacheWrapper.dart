@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter_simple_updates/interface/ICacheWrapper.dart';
 import 'package:flutter_simple_updates/models/FeedEntryModel.dart';
 import 'package:path_provider/path_provider.dart';
@@ -22,9 +24,13 @@ class HiveCacheWrapper implements ICacheWrapper {
 
   @override
   Future<void> init() async {
+    Directory? dir;
     hasInit = true;
-    final dir = await getApplicationSupportDirectory();
-    final store = await newHiveDefaultCacheStore(path: storagePath ?? dir.path);
+    if (storagePath == null) {
+      dir = await getApplicationSupportDirectory();
+    }
+    final store =
+        await newHiveDefaultCacheStore(path: storagePath ?? dir!.path);
     _cacheStore = await store.cache<FeedEntryModel>(
       name: name,
       maxEntries: cacheMaxEntries,
