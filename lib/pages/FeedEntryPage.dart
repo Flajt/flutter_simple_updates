@@ -4,7 +4,6 @@ import 'package:flutter_simple_updates/models/FeedEntryModel.dart';
 import 'package:markdown_widget/config/configs.dart';
 import 'package:markdown_widget/widget/all.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:url_launcher/url_launcher_string.dart';
 
 class FeedEntryPage extends StatelessWidget {
   final FeedEntryModel feedEntry;

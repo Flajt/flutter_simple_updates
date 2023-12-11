@@ -1,6 +1,6 @@
 name: flutter_simple_updates
 description: Simple in app notifications from different sources with prebuild widget, easy to extend.
-version: 0.0.1
+version: 0.0.2
 homepage: https://github.com/Flajt/flutter_simple_updates
 repository: https://github.com/Flajt/flutter_simple_updates
 issue_tracker: https://github.com/Flajt/flutter_simple_updates/issues
