@@ -32,4 +32,9 @@ class FeedEntryModel {
         source = json['source'],
         subtitle = json['subtitle'],
         dateTime = DateTime.fromMillisecondsSinceEpoch(json['dateTime']);
+
+  @override
+  String toString() {
+    return "FeedEntryModel(title: $title, body: $body, source: $source, subtitle: $subtitle, dateTime: $dateTime)";
+  }
 }
