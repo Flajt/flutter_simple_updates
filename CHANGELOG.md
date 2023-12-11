@@ -5,3 +5,7 @@
 - Fix: Readme formatting
 - Fix: License formatting
 - Chore: rm unused import
+
+## 0.1.2
+- Fix: Expose queryInterval
+- Fix: Move `Future.delayed` at the end of the loop
