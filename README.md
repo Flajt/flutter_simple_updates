@@ -1,39 +1,56 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
-
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages).
-
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages).
--->
-
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+A simple way to display notifications to users in your app from 3rd party services like mastodon etc.
 
 ## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+- A simple yet highly customizable notification button
+- A dialog to render your latest notifications
+- Caching is implemented by default
+- Easily write your own parsers to fetch data from everywhere you want
 
 ## Getting started
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+Run: `flutter pub add flutter_simple_updates`
+
+- Search for your 3rd party parser (currently Mastodon is the only supported one by me)
+- If not yet existing build your own
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
+- Add the `ǸotificationWidget` anywhere you like and you are ready to go.
+- Below I'm using the `!` to filter out messages that should reach the app. So every message starting with `!` will be displayed if the user presses the button.
+- Add your desired cache to the NotificationWidget and optionaly change it's parameters (e.g. storage path, max items etc.)
 
 ```dart
-const like = 'sample';
+class MyHomePage extends StatelessWidget {
+  MyHomePage({super.key});
+  final SimpleMastodonParser parser =
+      SimpleMastodonParser("!", "https://mastodon.world/<your-tag-here>");// Not included in this package!
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: NotificationWidget(
+          cache: HiveCacheWrapper(), // Included Cache
+          feedProvider: parser,
+        ),
+      ),
+    );
+  }
+}
+
 ```
+## Parsers
+- [simple_mastodon_parser](https://pub.dev/packages/simple_mastodon_parser)
+
 
 ## Additional information
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+If you want to create a new parser, simply extend `ÀFeedParsingService` and pass it to the NotificationWidget and you are good to go.<b>
+Desire a custom cache? Same thing applies, just implement the `ICacheWrapper` and you are ready.
+<br>
+Your data is not markdown? Don't worry, just build your own adapter by implementing the `ÌConverter` interface and pass it to the `NotificationWidget`, just make sure it afterwards returns markdown data.
+<br>
+If you are writing a package for a provider, consider letting me know so I can link it here for others to find and use.
+<br>
+The trigger character, sentence (or whatever) needs to be the **first** thing in your post!
