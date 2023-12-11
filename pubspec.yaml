@@ -1,5 +1,5 @@
 name: flutter_simple_updates
-description: A new Flutter package project.
+description: Simple in app notifications from different sources with prebuild widget, easy to extend.
 version: 0.0.1
 homepage: https://github.com/Flajt/flutter_simple_updates
 repository: https://github.com/Flajt/flutter_simple_updates
