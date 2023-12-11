@@ -3,6 +3,7 @@ description: A new Flutter package project.
 version: 0.0.1
 homepage: https://github.com/Flajt/flutter_simple_updates
 repository: https://github.com/Flajt/flutter_simple_updates
+issue_tracker: https://github.com/Flajt/flutter_simple_updates/issues
 
 environment:
   sdk: '>=3.1.5 <4.0.0'
