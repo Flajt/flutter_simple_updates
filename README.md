@@ -41,7 +41,7 @@ class MyHomePage extends StatelessWidget {
 
 ```
 ## Parsers
-- [simple_mastodon_parser](https://pub.dev/packages/simple_mastodon_parser)
+- [simple_mastodon_updates](https://pub.dev/packages/simple_mastodon_updates)
 
 
 ## Additional information
