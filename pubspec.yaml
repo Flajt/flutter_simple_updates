@@ -1,8 +1,9 @@
 name: flutter_simple_updates
-description: A new Flutter package project.
-version: 0.0.1
+description: Simple in app notifications from different sources with prebuild widget, easy to extend.
+version: 0.1.3
 homepage: https://github.com/Flajt/flutter_simple_updates
 repository: https://github.com/Flajt/flutter_simple_updates
+issue_tracker: https://github.com/Flajt/flutter_simple_updates/issues
 
 environment:
   sdk: '>=3.1.5 <4.0.0'
@@ -12,17 +13,17 @@ dependencies:
   flutter:
     sdk: flutter
   html: ^0.15.4
-  html2md: ^1.3.1
-  markdown_widget: ^2.3.1
-  path_provider: ^2.1.1
-  stash: ^5.0.2
-  stash_hive: ^5.0.2
-  url_launcher: ^6.2.2
+  html2md: ^1.3.2
+  markdown_widget: ^2.3.2
+  path_provider: ^2.1.3
+  stash: ^5.2.0
+  stash_hive: ^5.2.0
+  url_launcher: ^6.3.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.0
+  flutter_lints: ^4.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

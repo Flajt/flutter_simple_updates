@@ -31,11 +31,10 @@ class NotificationQueryService {
         } else {
           yield false;
         }
-
-        await Future.delayed(queryInterval);
       } catch (e) {
         yield false;
       }
+      await Future.delayed(queryInterval);
     }
   }
 }

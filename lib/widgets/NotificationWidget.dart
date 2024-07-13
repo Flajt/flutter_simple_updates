@@ -24,6 +24,10 @@ class NotificationWidget extends StatefulWidget {
   /// The cache to use
   final ICacheWrapper cache;
 
+  ///The timeout duration
+  ///Defaults to 10 minutes
+  final Duration queryInterval;
+
   /// The converter to use, defaults to [HTMLtoMarkDownConverter]
   /// The converter is used to convert the body of the feed entry to markdown
   final IConverter converter;
@@ -32,10 +36,11 @@ class NotificationWidget extends StatefulWidget {
       this.noNotificationIcon = const Icon(Icons.notifications),
       this.hasNotificationIcon = const Icon(Icons.notifications_active),
       this.converter = const HTMLtoMarkDownConverter(),
+      this.queryInterval = const Duration(minutes: 10),
       required this.feedProvider,
       required this.cache}) {
-    notificationQueryService =
-        NotificationQueryService(feedProvider: feedProvider, cache: cache);
+    notificationQueryService = NotificationQueryService(
+        feedProvider: feedProvider, cache: cache, queryInterval: queryInterval);
   }
 
   @override

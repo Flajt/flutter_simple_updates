@@ -41,16 +41,19 @@ class MyHomePage extends StatelessWidget {
 
 ```
 ## Parsers
-- [simple_mastodon_parser](https://pub.dev/packages/simple_mastodon_parser)
+- [simple_mastodon_updates](https://pub.dev/packages/simple_mastodon_updates)
 
 
 ## Additional information
 
-If you want to create a new parser, simply extend `ÀFeedParsingService` and pass it to the NotificationWidget and you are good to go.<b>
+If you want to create a new parser, simply extend `ÀFeedParsingService` and pass it to the NotificationWidget and you are good to go.<br>
 Desire a custom cache? Same thing applies, just implement the `ICacheWrapper` and you are ready.
 <br>
+
 Your data is not markdown? Don't worry, just build your own adapter by implementing the `ÌConverter` interface and pass it to the `NotificationWidget`, just make sure it afterwards returns markdown data.
 <br>
+
 If you are writing a package for a provider, consider letting me know so I can link it here for others to find and use.
 <br>
+
 The trigger character, sentence (or whatever) needs to be the **first** thing in your post!
